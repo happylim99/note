@@ -1,14 +1,15 @@
 import dependencies.AndroidTestDependencies
+import dependencies.AnnotationProcessing
 import dependencies.Dependencies
 import dependencies.Application
 import dependencies.Versions
 import dependencies.Java
 import dependencies.SupportDependencies
 
-
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion Versions.compilesdk
@@ -58,4 +59,20 @@ dependencies {
     implementation SupportDependencies.constraintlayout
     implementation SupportDependencies.material_design
     implementation SupportDependencies.swipe_refresh_layout
+
+    // dagger
+    implementation Dependencies.dagger
+    // annotation processing
+    kapt AnnotationProcessing.dagger_compiler
+
+    //firebase
+    implementation Dependencies.firebase_firestore
+    implementation Dependencies.firebase_auth
+    implementation Dependencies.firebase_analytics
+    implementation Dependencies.firebase_crashlytics
+
+    // coroutine
+    implementation Dependencies.kotlin_coroutines
+    implementation Dependencies.kotlin_coroutines_android
+    implementation Dependencies.kotlin_coroutines_play_services
 }
